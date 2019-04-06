@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static alabs.gsheetwithimage.Configuration.KEY_CELL;
 import static alabs.gsheetwithimage.Configuration.KEY_ID;
 import static alabs.gsheetwithimage.Configuration.KEY_IMAGE;
 import static alabs.gsheetwithimage.Configuration.KEY_NAME;
@@ -20,7 +21,7 @@ public class JsonParser {
     public static String[] uIds;
     public static String[] uNames;
     public static String[] uImages;
-
+    public static String[] uCell;
 
     private JSONArray users = null;
 
@@ -39,11 +40,13 @@ public class JsonParser {
             uIds = new String[users.length()];
             uNames = new String[users.length()];
             uImages = new String[users.length()];
+            uCell =  new String[users.length()];
 
             for(int i=0;i<users.length();i++){
                 JSONObject jo = users.getJSONObject(i);
                 uIds[i] = jo.getString(KEY_ID);
                 uNames[i] = jo.getString(KEY_NAME);
+                uCell[i] = jo.getString(KEY_CELL);
                 uImages[i] = jo.getString(KEY_IMAGE);
             }
 

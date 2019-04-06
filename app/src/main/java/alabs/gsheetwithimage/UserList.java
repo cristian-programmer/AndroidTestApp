@@ -75,7 +75,7 @@ public class UserList extends AppCompatActivity  {
         JsonParser pj = new JsonParser(json);
         pj.parseJSON();
         //Log.e("uImage","ser image"+JsonParser.uImages[1]);
-        UserListAdapter userListAdapter = new UserListAdapter(this, JsonParser.uIds,JsonParser.uNames,JsonParser.uImages);
+        UserListAdapter userListAdapter = new UserListAdapter(this, JsonParser.uIds,JsonParser.uNames, JsonParser.uCell ,JsonParser.uImages);
         listView.setAdapter(userListAdapter);
     }
 

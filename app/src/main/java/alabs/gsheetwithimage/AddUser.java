@@ -36,6 +36,7 @@ import java.util.Map;
 
 import static alabs.gsheetwithimage.Configuration.ADD_USER_URL;
 import static alabs.gsheetwithimage.Configuration.KEY_ACTION;
+import static alabs.gsheetwithimage.Configuration.KEY_CELL;
 import static alabs.gsheetwithimage.Configuration.KEY_ID;
 import static alabs.gsheetwithimage.Configuration.KEY_IMAGE;
 import static alabs.gsheetwithimage.Configuration.KEY_NAME;
@@ -47,7 +48,9 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextUserName;
     private EditText editTextUserId;
+    private EditText editTextUserCell;
     private ImageView imageViewUserImage;
+
     private Button buttonAddUser,buttonAddImage;
      String userImage;
 
@@ -62,7 +65,9 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
 
         editTextUserId = (EditText) findViewById(R.id.et_uid);
         editTextUserName = (EditText) findViewById(R.id.et_uname);
+        editTextUserCell = (EditText) findViewById(R.id.et_cell);
         imageViewUserImage=(ImageView)findViewById(R.id.iv_uphoto);
+
 
 
 
@@ -104,9 +109,10 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
         final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
         final String userId = editTextUserId.getText().toString().trim();
         final String userName = editTextUserName.getText().toString().trim();
-       //Bitmap  rbitmap = getResizedBitmap(bitmap,500);
+        final String userCell = editTextUserCell.getText().toString().trim();
+        //Bitmap  rbitmap = getResizedBitmap(bitmap,500);
 
-        Log.e("null","values"+userImage);
+        Log.e("null","values"+userCell);
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,ADD_USER_URL,
@@ -129,14 +135,15 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
                 params.put(KEY_ACTION,"insert");
                 params.put(KEY_ID,userId);
                 params.put(KEY_NAME,userName);
+                params.put(KEY_CELL, userCell);
                 params.put(KEY_IMAGE,userImage);
-
+                Log.e("","--------- PARAMS ---------"+params.get(KEY_CELL));
                 return params;
             }
 
         };
 
-        int socketTimeout = 30000; // 30 seconds. You can change it
+        int socketTimeout = 50000; // 30 seconds. You can change it
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
