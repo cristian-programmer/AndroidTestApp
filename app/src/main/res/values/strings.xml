@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">App Contactos</string>
+    <string name="btn_add_contact"> Agregar Contacto</string>
+    <string name="btn_view_contact" > Ver Contactos</string>
+</resources>
