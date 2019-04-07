@@ -36,6 +36,7 @@ import java.util.Map;
 
 import static alabs.gsheetwithimage.Configuration.ADD_USER_URL;
 import static alabs.gsheetwithimage.Configuration.KEY_ACTION;
+import static alabs.gsheetwithimage.Configuration.KEY_ADDRESS;
 import static alabs.gsheetwithimage.Configuration.KEY_CELL;
 import static alabs.gsheetwithimage.Configuration.KEY_ID;
 import static alabs.gsheetwithimage.Configuration.KEY_IMAGE;
@@ -50,7 +51,7 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
     private EditText editTextUserId;
     private EditText editTextUserCell;
     private ImageView imageViewUserImage;
-
+    private EditText editTextAddress;
     private Button buttonAddUser,buttonAddImage;
      String userImage;
 
@@ -66,6 +67,7 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
         editTextUserId = (EditText) findViewById(R.id.et_uid);
         editTextUserName = (EditText) findViewById(R.id.et_uname);
         editTextUserCell = (EditText) findViewById(R.id.et_cell);
+        editTextAddress = (EditText) findViewById(R.id.ed_addr);
         imageViewUserImage=(ImageView)findViewById(R.id.iv_uphoto);
 
 
@@ -110,6 +112,7 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
         final String userId = editTextUserId.getText().toString().trim();
         final String userName = editTextUserName.getText().toString().trim();
         final String userCell = editTextUserCell.getText().toString().trim();
+        final String userAddr = editTextAddress.getText().toString().trim();
         //Bitmap  rbitmap = getResizedBitmap(bitmap,500);
 
         Log.e("null","values"+userCell);
@@ -136,6 +139,7 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
                 params.put(KEY_ID,userId);
                 params.put(KEY_NAME,userName);
                 params.put(KEY_CELL, userCell);
+                params.put(KEY_ADDRESS, userAddr);
                 params.put(KEY_IMAGE,userImage);
                 Log.e("","--------- PARAMS ---------"+params.get(KEY_CELL));
                 return params;

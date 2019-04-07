@@ -14,7 +14,7 @@ public class Configuration {
     public static final String KEY_NAME = "uName";
     public static final String KEY_IMAGE = "uImage";
     public static final String KEY_CELL = "uCell";
-
+    public static final String KEY_ADDRESS = "uAdd";
     public static final String KEY_ACTION = "action";
     public static final String KEY_USERS = "records";
 
